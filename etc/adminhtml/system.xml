@@ -1,0 +1,105 @@
+<!--
+/**
+ * MageINIC
+ * Copyright (C) 2023 MageINIC <support@mageinic.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see https://opensource.org/licenses/gpl-3.0.html.
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category MageINIC
+ * @package MageINIC_PricePerCustomer
+ * @copyright Copyright (c) 2023 MageINIC (https://www.mageinic.com/)
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author MageINIC <support@mageinic.com>
+ */
+ -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="price_per_customer" translate="label" sortOrder="10"
+                 showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Price Per Customer</label>
+            <tab>mageinic</tab>
+            <resource>MageINIC_PricePerCustomer::customerprice_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enable" translate="label" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Module Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="link_name" translate="label" type="text" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Link Name</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="page_title" translate="label" type="text" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page Title</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+                <field id="show_link_in_top" translate="label" type="select" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <label>Show Link In Top</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="Show_link_footer" translate="label" type="select" sortOrder="50"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <label>Show link In Footer</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="page_layout" translate="label" type="select" sortOrder="60"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <label>Price Per Customer Page Layout</label>
+                    <source_model>MageINIC\PricePerCustomer\Model\Config\Source\PageLayoutList</source_model>
+                </field>
+            </group>
+            <group id="import_export" translate="label" type="text" sortOrder="20"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <depends>
+                    <field id="price_per_customer/general/enable">1</field>
+                </depends>
+                <label>Import Export For Product Wise</label>
+                <field id="export_price" translate="label" type="button" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Export</label>
+                    <frontend_model>MageINIC\PricePerCustomer\Block\System\Config\Button</frontend_model>
+                </field>
+                <field id="import_price" translate="label" type="label" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <depends>
+                        <field id="price_per_customer/general/enable">1</field>
+                    </depends>
+                    <label>Import</label>
+                    <frontend_model>MageINIC\PricePerCustomer\Block\System\Config\ImportLink</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

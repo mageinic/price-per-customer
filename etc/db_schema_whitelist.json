@@ -1,0 +1,16 @@
+{
+    "mageinic_price_per_customer": {
+        "column": {
+            "entity_id": true,
+            "product_id": true,
+            "customer_id": true,
+            "price": true,
+            "quantity": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "MAGEINIC_PRICE_PER_CSTR_PRD_ID_CAT_PRD_ENTT_ENTT_ID": true,
+            "MAGEINIC_PRICE_PER_CSTR_CSTR_ID_CSTR_ENTT_ENTT_ID": true
+        }
+    }
+}

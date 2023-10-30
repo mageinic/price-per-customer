@@ -1,0 +1,125 @@
+<?php
+/**
+ * MageINIC
+ * Copyright (C) 2023 MageINIC <support@mageinic.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see https://opensource.org/licenses/gpl-3.0.html.
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category MageINIC
+ * @package MageINIC_PricePerCustomer
+ * @copyright Copyright (c) 2023 MageINIC (https://www.mageinic.com/)
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author MageINIC <support@mageinic.com>
+ */
+
+use MageINIC\PricePerCustomer\Block\Adminhtml\CustomerEdit\Tab\CustomerView;
+use Magento\Framework\Escaper;
+
+/**
+ * @var $block CustomerView
+ * @var $escaper Escaper;
+ */
+
+$customerId = $block->getCustomerId();
+$productCollection = $block->getProductCollection($customerId);
+?>
+<div class="fieldset-wrapper-title">
+    <span class="title"><?= $escaper->escapeHtml(__('Special Priced Product List')) ?></span>
+</div>
+<div id="order-items_grid">
+    <div class="admin__table-wrapper">
+        <table class="admin__table-secondary">
+            <thead>
+            <?= $block->getChildHtml(); ?>
+            <tr class="headings">
+                <th class="col-entity_id">
+                    <span>
+                        <?= $escaper->escapeHtml(__('Id')) ?>
+                    </span>
+                </th>
+                <th class="col-thumbnail">
+                    <span>
+                        <?= $escaper->escapeHtml(__('Product Thumbnail')) ?>
+                    </span>
+                </th>
+                <th class="col-product-name">
+                    <span>
+                        <?= $escaper->escapeHtml(__('Product Name')) ?>
+                    </span>
+                </th>
+                <th class="col-price">
+                    <span>
+                        <?= $escaper->escapeHtml(__('Price')) ?>
+                    </span>
+                </th>
+                <th class="col-special-price">
+                    <span>
+                        <?= $escaper->escapeHtml(__('Special Price')) ?>
+                    </span>
+                </th>
+                <th class="col-qty">
+                    <span>
+                        <?= $escaper->escapeHtml(__('Quantity')) ?>
+                    </span>
+                </th>
+                <th class="col-action">
+                    <span>
+                        <?= $escaper->escapeHtml(__('Action')) ?>
+                    </span>
+                </th>
+            </tr>
+            </thead>
+            <tbody class="odd">
+            <?php
+            foreach ($productCollection as $product): ?>
+                <?php $productData = $block->getProductData($product->getProductId()) ?>
+                <tr>
+                    <td>
+                        <?= $escaper->escapeHtml($product->getId()) ?>
+                    </td>
+                    <td class="data-grid-thumbnail-cell">
+                        <img class="admin__control-thumbnail" style="border: 1px solid #d6d6d6; width: 7rem;"
+                             src="<?= $escaper->escapeHtmlAttr($block->getThumbnailUrl($productData)) ?>"
+                             alt="<?= $escaper->escapeHtmlAttr($productData->getSku()) ?>"/>
+                    </td>
+                    <td>
+                        <a href="<?= $escaper->escapeUrl($block->getProductEditUrl($productData->getId())) ?>">
+                            <span>
+                                <?= $escaper->escapeHtml($productData->getName()) ?>
+                            </span>
+                        </a>
+                    </td>
+                    <td>
+                        <span>
+                            <?= $escaper->escapeHtml($productData->getPrice()) ?>
+                        </span>
+                    </td>
+                    <td><?= $escaper->escapeHtml($product->getPrice()) ?></td>
+                    <td><?= $escaper->escapeHtml($product->getQuantity()) ?></td>
+                    <td>
+                        <a href="<?= $escaper->escapeUrl($block->getDeleteAction() . 'id/'
+                        . /**@noEscape*/ $product->getId()) ?>">
+                            <button class="action-delete delete-option" type="button">
+                                <span>
+                                    <?= $escaper->escapeHtml(__("Remove")) ?>
+                                </span>
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>

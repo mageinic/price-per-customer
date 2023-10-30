@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "aada6677-941d-4973-9912-92308f66c0d7",
+		"name": "PricePerCustomerAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetList",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJraWQiOiIxIiwiYWxnIjoiSFMyNTYifQ.eyJ1aWQiOjEsInV0eXBpZCI6MiwiaWF0IjoxNjk1ODk5NzE2LCJleHAiOjE2OTU5MDMzMTZ9.E6o4EgZ1knPtNR3Yz5jyml8nMQMMQ2i7FKwDsnx_UYE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/rest/V1/customprice?searchCriteria[filterGroups][0][filters][0][field]=customer_id&searchCriteria[filterGroups][0][filters][0][value]=1&searchCriteria[pageSize]=5&searchCriteria[currentPage]=1",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"rest",
+						"V1",
+						"customprice"
+					],
+					"query": [
+						{
+							"key": "searchCriteria[filterGroups][0][filters][0][field]",
+							"value": "customer_id"
+						},
+						{
+							"key": "searchCriteria[filterGroups][0][filters][0][value]",
+							"value": "1"
+						},
+						{
+							"key": "searchCriteria[pageSize]",
+							"value": "5"
+						},
+						{
+							"key": "searchCriteria[currentPage]",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJraWQiOiIxIiwiYWxnIjoiSFMyNTYifQ.eyJ1aWQiOjEsInV0eXBpZCI6MiwiaWF0IjoxNjk1ODk5NzE2LCJleHAiOjE2OTU5MDMzMTZ9.E6o4EgZ1knPtNR3Yz5jyml8nMQMMQ2i7FKwDsnx_UYE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/rest/V1/customprice/1",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"rest",
+						"V1",
+						"customprice",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
