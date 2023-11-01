@@ -1,6 +1,6 @@
 {
     "name": "mageinic/pricepercustomer",
-    "description": "Price Per Customer Extension by MageINIC team",
+    "description": "Price Per Customer by MageINIC, The ultimate solution for personalized customer experiences! With the ability to display the price per customer link conveniently in your website's header or footer, customers can effortlessly access personalized prices and exclusive promotions with just one click.",
     "require": {
         "php": "^8.0",
         "mageinic/core": "1.0.*",
@@ -11,7 +11,8 @@
     "type": "magento2-module",
     "version": "1.0.0",
     "license": [
-        "Commercial"
+        "OSL-3.0",
+        "AFL-3.0"
     ],
     "authors": [
         {
