@@ -11,7 +11,7 @@
 Run the following command in Magento 2 root folder
 
 ```
-composer require mageinic/pricepercustomer
+composer require mageinic/price-per-customer
 
 php bin/magento maintenance:enable
 php bin/magento setup:upgrade

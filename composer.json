@@ -1,5 +1,5 @@
 {
-    "name": "mageinic/pricepercustomer",
+    "name": "mageinic/price-per-customer",
     "description": "Price Per Customer by MageINIC, The ultimate solution for personalized customer experiences! With the ability to display the price per customer link conveniently in your website's header or footer, customers can effortlessly access personalized prices and exclusive promotions with just one click.",
     "require": {
         "php": "^8.0",
